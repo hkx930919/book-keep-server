@@ -18,10 +18,13 @@ const personSchema = new Schema({
 personSchema.methods = {
   say() {
     console.log(`my name is ${this.name}`)
+    console.log('====this', this.model('Person'))
   },
 }
 // 定义的statics在model的静态方法中，this执行model
 personSchema.statics.findName = function findName() {
+  //   console.log('====this', this)
+
   console.log('执行了findName方法')
 }
 
