@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
+const express = require('express')
+
 const { MONGODB_URL, DATA_BASE } = require('../setting')
+
+const app = express()
 
 const { Schema, model } = mongoose
 mongoose.connect(`${MONGODB_URL}/${DATA_BASE}`, { useNewUrlParser: true })
@@ -41,3 +45,12 @@ tom.info()
 
 tom.save()
 Person.findName()
+
+app.get('/', (req, res) => {
+  Person.find({ name: 'tom' })
+    .limit(10)
+    .exec((err, docs) => {
+      res.send(docs)
+    })
+})
+app.listen(3008)

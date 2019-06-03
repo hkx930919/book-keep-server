@@ -17,5 +17,6 @@ module.exports = {
     'no-console': 0,
     'func-names': 0,
     semi: 0,
+    radix: 0,
   },
 }
